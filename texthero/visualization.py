@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.express as px
 from wordcloud import WordCloud
 
+
 def scatterplot(df: pd.DataFrame,
                 col: str,
                 color: str = None,
@@ -38,9 +39,8 @@ def scatterplot(df: pd.DataFrame,
     if return_figure:
         return fig
 
-def wordcloud(s: pd.Series, 
-              title="",
-              return_figure=False):
+
+def wordcloud(s: pd.Series, title="", return_figure=False):
     """
     Show wordcloud using WordCloud.
 
@@ -52,9 +52,10 @@ def wordcloud(s: pd.Series,
 
     """
     text = s.str.cat(sep=' ')
-    
-    wordcloud = WordCloud(background_color ='white', min_font_size = 10).generate(text) 
-    
+
+    wordcloud = WordCloud(background_color='white',
+                          min_font_size=10).generate(text)
+
     fig = px.imshow(wordcloud, title=title)
     fig.show()
 
